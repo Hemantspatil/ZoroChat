@@ -14,9 +14,9 @@ const io = new Server(server, {
 });
 
 
-export function getReceiverSocketId(receivrId){
-    return userSocketMap(userId);
-};
+export function getReceiverSocketId(userId) {
+    return userSocketMap[userId];
+  }
 
 // used to store online users
 
@@ -33,6 +33,8 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("A user diconnected", socket.id);
         delete userSocketMap[userId];
+        io.emit("getOnlineUsers", Object.keys(userSocketMap));
+
     })
 });
 

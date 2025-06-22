@@ -22,8 +22,10 @@ const ChatContainer = () => {
   useEffect(() => {
     getMessages(selectedUser._id);
 
+     subscribeToMessages();
 
-  }, [selectedUser._id, getMessages, ]);
+     return () => unsubscribeFromMessages();
+  }, [selectedUser._id, getMessages, subscribeToMessages, unsubscribeFromMessages ]);
 
   useEffect(() => {
     if (messageEndRef.current && messages) {
@@ -40,6 +42,8 @@ const ChatContainer = () => {
       </div>
     );
   }
+
+  
 
   return (
     <div className="flex-1 flex flex-col overflow-auto">

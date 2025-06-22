@@ -36,7 +36,7 @@ if(isCheckingAuth && !authUser) return(
 )
 
   return (
-    <div data-theme={theme}>
+    <div data-theme={theme} >
 
 
   <Navbar/>
