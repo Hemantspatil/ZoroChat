@@ -39,12 +39,11 @@ if(process.env.NODE_ENV === "production"){
 
 await connectDB();;
 
-if (process.env.NODE_ENV !== "production") {
+
     server.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`); 
         connectDB();
     });
-}
 
 
-export default server;
+
